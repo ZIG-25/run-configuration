@@ -31,6 +31,7 @@ services:
     image: slasota/craftable-backend:latest
     environment:
       MYSQL_URL: jdbc:mysql://db
+      IMAGE_BASE_PATH_CRAFTABLE: /data
       MYSQL_PORT: 3306
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: rootpassword
@@ -40,6 +41,8 @@ services:
       - "8080:8080"
     networks:
       - app-network
+    volumes:
+      - img-data:/data
 
   frontend:
     image: slasota/craftable-frontend:latest
@@ -54,6 +57,7 @@ services:
 
 volumes:
   db-data:
+  img-data:
 
 networks:
   app-network:
